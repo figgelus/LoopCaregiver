@@ -1,4 +1,4 @@
-#include? "../../LoopConfigOverride.xcconfig"
+include? "../../LoopConfigOverride.xcconfig"
 
 // Override this if you don't want the default com.${DEVELOPMENT_TEAM}.loopkit that loop uses
 // MAIN_APP_BUNDLE_IDENTIFIER = com.myname.loop
@@ -10,4 +10,4 @@
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) SIMULATORS_ENABLED //DEBUG_FEATURES_ENABLED
 
 // Put your team id here for signing
-//LOOP_DEVELOPMENT_TEAM = UY678SP37Q
+LOOP_DEVELOPMENT_TEAM = 23PMYQ3C3C
