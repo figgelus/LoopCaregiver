@@ -207,8 +207,6 @@ class HUDViewModel: ObservableObject {
         self.settings = settings
         self.glucoseDisplayUnits = self.settings.glucoseDisplayUnits
         
-        //TODO: This is the only things allowing updates like this to work: accountService.selectedLooper = looper
-        //This logic should be in the accountService
         self.accountService.$selectedLooper.sink { val in
         } receiveValue: { [weak self] updatedUser in
             if let self, let updatedUser, self.selectedLooper != updatedUser {

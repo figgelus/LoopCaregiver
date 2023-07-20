@@ -89,24 +89,14 @@ Remote Commands 2.0 is a set of experimental features that supports command stat
 
 Setting up these features may be difficult except for advanced Loop builders that are comfortable troubleshooting git and Xcode issues and deploying to Nightscout.
 
-### Branch Configuration
-
-Special Nightscout and Loop branches are required to use Remote 2.0. This describes each.
-
-WARNING: These Loop and NS branch are based off dev. If dev updates are desired you will need to merge them in yourself.
-
-* Nightscout
-  * Description: Includes Remote 2.0 API and Time sensitive notifications. This was based off NS dev as of June 2023.
-  * Repo: https://github.com/gestrich/cgm-remote-monitor
-  * Branch: feature/2023-07/bg/remote-commands
-* Loop
-  * Description: Includes Remote 2.0 additions
-  * Repo: https://github.com/LoopKit/LoopWorkspace.git
-  * Branch feature/2023-07/bg/remote-commands - This was based off Loop dev as of 7-3-23
-    * `git clone https://github.com/LoopKit/LoopWorkspace.git --branch=feature/2023-07/bg/remote-commands --recurse-submodules`
-
-### Remote 2.0 Usage
-
+* Deploy special instance of Nightscout https://github.com/gestrich/cgm-remote-monitor/tree/caregiver
+  * Make sure to deploy the "feature/2023-07/bg/remote-commands" branch
+  * This branch was based off of Nightscout dev and includes Remote 2.0 additions.
+* Build special branch of LoopWorkspace
+  * Clone either
+    * Main (Loop 3.2.1): `git clone https://github.com/LoopKit/LoopWorkspace.git --branch=feature/2023-03/bg/remote-commands --recurse-submodules`
+    * Dev (as of 7-3-23): `git clone https://github.com/LoopKit/LoopWorkspace.git --branch=feature/2023-07/bg/remote-commands --recurse-submodules`
+      * WARNING: This branch will not be updated as the dev branch updates. If updates are desired you will need to merge them in yourself.
 * Activate Remote Commands 2 in Caregiver
   * Caregiver -> Settings
   * Tap and hold the "Disabled" text under the "Experimental Features" section to reveal the secret experimental features options.
@@ -114,40 +104,3 @@ WARNING: These Loop and NS branch are based off dev. If dev updates are desired 
 * After delivering carbs/bolus/override, the command status will show at the bottom of Caregiver Settings -> Select Loopers name.
 * Additional commands such as autobolus activation, closed loop activation are available in aforementioned view.
 * Note that occasionally (every few weeks) you should clear old commands in Settings -> Select Loopers name -> Delete All Commands. This is to avoid a performance issue when too many commands build up that will be fixed later.
-
-# Widget Feature
-
-
-### TODO 
-* Styling
-    * Support lock screen style only for V1
-* App Group migration
-    * Document Group ID update process
-    * Fix Github Action Builds
-* Remove this TODO section
-
-
-###
-
-* App Group Migration Notes
-    * Caregiver Docs
-        * https://loopkit.github.io/loopdocs/nightscout/remote-overrides/#loopcaregiver
-        * Github notes point you to https://loopkit.github.io/loopdocs/gh-actions/gh-other-apps
-    * Other Apps Docs
-        * https://loopkit.github.io/loopdocs/gh-actions/gh-other-apps/#build-app
-        * No mention of app groups setup
-    * Loop App Group Docs
-        * https://loopkit.github.io/loopdocs/gh-actions/gh-first-time/#create-app-group
-        * Quite complicated
-    * Apple API
-        * Billy Booth notes 
-            * Mentioned there is not a fastlane API for both creating group and adding an app to the group.
-            * If we could do the 2nd, we could reuse the same app group?
-            * See Fastlane Page for auth requirements
-                * https://docs.fastlane.tools/app-store-connect-api/
-        * Produce API
-            * https://docs.fastlane.tools/actions/produce/
-            * Does group things
-        * Existing Caregiver Used APIs
-            * latest_testflight_build_number
-            * https://docs.fastlane.tools/actions/latest_testflight_build_number/
